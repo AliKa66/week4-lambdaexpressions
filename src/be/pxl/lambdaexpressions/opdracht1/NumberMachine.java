@@ -15,12 +15,19 @@ public class NumberMachine {
 		String result = "";
 		for (int i = 0; i < numbers.size(); i++) {
 			if (filter.check(numbers.get(i))) {
-				result += numbers.get(i);
-				if (i + 1 != numbers.size()) {
-					result += "-";
-				}
+				result += "-" + numbers.get(i);
 			}
 		}
+		result = result.substring(1);
+		return result;
+	}
+
+	public String convertNumbers(Function<Integer, String> parser) {
+		String result = "";
+		for (int number : numbers) {
+			result += "-" + parser.apply(number);
+		}
+		result = result.substring(1);
 		return result;
 	}
 }
